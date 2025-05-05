@@ -3324,7 +3324,6 @@ declare namespace Cypress {
     spec: Cypress['spec'] | null
     specs: Array<Cypress['spec']>
     isDefaultProtocolEnabled: boolean
-    isStudioProtocolEnabled: boolean
     hideCommandLog: boolean
     hideRunnerUi: boolean
   }
