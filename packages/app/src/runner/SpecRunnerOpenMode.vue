@@ -98,6 +98,7 @@
             :event-manager="eventManager"
             :studio-status="studioStatus"
             :aut-url-selector="autUrlSelector"
+            :studio-ai-available="studioAiAvailable"
           />
         </HideDuringScreenshot>
       </template>
@@ -167,6 +168,7 @@ fragment SpecRunner_Preferences on Query {
 gql`
 fragment SpecRunner_Studio on Query {
   cloudStudioRequested
+  studioAiAvailable
 }
 `
 
@@ -267,6 +269,10 @@ const cloudStudioRequested = computed(() => {
   studioStore.setCloudStudioRequested(props.gql.cloudStudioRequested || false)
 
   return props.gql.cloudStudioRequested
+})
+
+const studioAiAvailable = computed(() => {
+  return props.gql.studioAiAvailable || false
 })
 
 const studioBetaAvailable = computed(() => {
