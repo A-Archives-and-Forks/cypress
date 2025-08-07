@@ -31,6 +31,8 @@ _Released 07/29/2025 (PENDING)_
 
 - Fixed an issue where Create from Component feature might not be able to parse React components from project files. Fixed in [#31457](https://github.com/cypress-io/cypress/pull/31457).
 - Fixed an issue where `isSecureContext` would be `false` on localhost when testing with Cypress. Addresses [#18217](https://github.com/cypress-io/cypress/issues/18217).
+- Fixed an issue where Angular legacy `Output()` decorators were broken when making component instance field references safe. Fixes [#32137](https://github.com/cypress-io/cypress/issues/32137).
+- Upgraded `tmp` from `~0.2.3` to `~0.2.4`. This removes the [CVE-2025-54798](https://github.com/advisories/GHSA-52f5-9888-hmc6) vulnerability being reported in security scans. Addresses [#32176](https://github.com/cypress-io/cypress/issues/32176).
 
 **Misc:**
 
@@ -45,7 +47,7 @@ _Released 07/29/2025 (PENDING)_
 
 ## 14.5.4
 
-_Released 8/12/2025 (PENDING)_
+_Released 8/07/2025_
 
 **Dependency Updates:**
 
