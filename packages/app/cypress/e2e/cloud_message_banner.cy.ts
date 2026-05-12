@@ -68,6 +68,14 @@ Cypress.on('window:before:load', (win) => {
 })
 
 describe('App - Cloud Message Banner', () => {
+  before(() => {
+    cy.task('__internal_optInToCloudAppMessages')
+  })
+
+  after(() => {
+    cy.task('__internal_restoreCommercialRecommendations')
+  })
+
   beforeEach(() => {
     cy.scaffoldProject('cypress-in-cypress')
     cy.openProject('cypress-in-cypress')
