@@ -15,6 +15,7 @@
 
 **Bugfixes:**
 
+- Fixed an issue where `config.isInteractive` was always `true` in the config passed to the plugins / `setupNodeEvents` function, even during `cypress run`. The value is now correctly `false` in run mode and `true` in open mode, so plugins can reliably distinguish between the two. Fixes [#20789](https://github.com/cypress-io/cypress/issues/20789).
 - Fixed an issue where component tests, and end-to-end tests using a local `baseUrl`, could fail to start with `Cypress could not verify that this server is running` when an `HTTP_PROXY` environment variable was set. Local hosts excluded from the proxy via `NO_PROXY` (such as `localhost`, `127.0.0.1`, and `::1`, which includes the component testing dev server) are now verified with a direct connection instead of being routed through the proxy. Fixes [#27990](https://github.com/cypress-io/cypress/issues/27990).
 - Video recording no longer silently fails on Firefox 93+, where it previously produced no video and ended with a `We failed processing this video` or operation timed out warning. Fixes [#18415](https://github.com/cypress-io/cypress/issues/18415). Fixed in [#33960](https://github.com/cypress-io/cypress/pull/33960).
 - Fixed an issue where runs recorded to Cypress Cloud from Jenkins could show the branch name with the remote prefix included (for example `origin/main` instead of `main`), or report the wrong branch in multibranch pipelines. Cypress now reports the actual branch name. Fixes [#20833](https://github.com/cypress-io/cypress/issues/20833).
