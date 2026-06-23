@@ -1,9 +1,13 @@
 <!-- See ../guides/writing-the-cypress-changelog.md for details on writing the changelog. -->
-## 15.17.1
+## 15.18.0
 
 **Performance:**
 
 - Fixed an issue where an application that repeatedly threw the same uncaught exception (for example, a benign `ResizeObserver loop ...` notification fired on every animation frame) could exhaust renderer memory and crash the browser. Consecutive identical uncaught exceptions within a test now collapse into a single, updating command-log entry, and a handled (suppressed) uncaught exception no longer captures a DOM snapshot. Addresses [#27415](https://github.com/cypress-io/cypress/issues/27415).
+
+**Features:**
+
+- Added a `removeSRIAttributes` configuration option. When enabled, Cypress strips the `integrity` attribute from `<script>` and `<link>` elements on first-party resources so they are not blocked by Subresource Integrity (SRI) enforcement after Cypress rewrites them. This covers `integrity` set via static HTML, a JavaScript string literal, and runtime DOM assignment (including the `webpack-subresource-integrity` pattern used for lazily-loaded chunks). Addresses [#34124](https://github.com/cypress-io/cypress/issues/34124) and [#18315](https://github.com/cypress-io/cypress/issues/18315).
 
 **Bugfixes:**
 
