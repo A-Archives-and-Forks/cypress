@@ -133,6 +133,14 @@ executors:
     environment:
       PLATFORM: linux
 
+  # Slim Node image for pure-Node jobs (check-ts, lint-types, health-check)
+  node-slim:
+    docker:
+      - image: cimg/node:22.19.0
+    resource_class: medium
+    environment:
+      PLATFORM: linux
+
   kitchensink-executor:
     docker:
       - image: *base-internal-trixie
@@ -1733,6 +1741,7 @@ jobs:
 
   check-ts:
     <<: *defaults
+    executor: node-slim
     steps:
       - restore_cached_workspace
       - install-required-node
@@ -1742,6 +1751,7 @@ jobs:
 
   health-check:
     <<: *defaults
+    executor: node-slim
     steps:
       - restore_cached_workspace
       - install-required-node
@@ -2048,6 +2058,7 @@ jobs:
 
   lint-types:
     <<: *defaults
+    executor: node-slim
     parallelism: 1
     steps:
       - restore_cached_workspace
