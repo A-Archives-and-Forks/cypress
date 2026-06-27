@@ -438,7 +438,7 @@ export class WebKitAutomation {
       case 'get:aut:title':
         return await this.getAutFrame().title()
       case 'focus:browser:window':
-        return await this.context.pages[0]?.bringToFront()
+        return await this.context.pages()[0]?.bringToFront()
       case 'reset:browser:state':
         debug('stubbed reset:browser:state')
 
